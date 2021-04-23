@@ -22,7 +22,7 @@ const project = new AwsCdkConstructLibrary({
   ],
   cdkDependenciesAsDeps: true,
   cdkTestDependencies: [],
-  cdkVersionPinning: true,
+  cdkVersionPinning: false,
   devDeps: [
     'esbuild',
   ],
@@ -35,8 +35,23 @@ const project = new AwsCdkConstructLibrary({
   authorAddress: 'https://davidtucker.net/',
   license: 'MIT',
   minNodeVersion: '12.0.0',
-  packageName: 'cdk-webapp-config',
+  packageName: 'cdk-webapp-tools',
   docgen: true,
+  keywords: [
+    'react',
+    'angular',
+    'svelte',
+    'deploy',
+    'aws',
+    'cdk',
+    'config',
+  ],
+});
+
+project.addFields({
+  awscdkio: {
+    twitter: '_davidtucker_',
+  },
 });
 
 project.synth();

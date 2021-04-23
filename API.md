@@ -4,20 +4,20 @@
 
 Name|Description
 ----|-----------
-[WebAppConfig](#cdk-webapp-config-webappconfig)|Construct that enables you to export value for use at runtime for your web application.
-[WebAppDeployment](#cdk-webapp-config-webappdeployment)|Construct that enables you to build and deploy a web application to an S3 bucket.
+[WebAppConfig](#cdk-webapp-tools-webappconfig)|Construct that enables you to export value for use at runtime for your web application.
+[WebAppDeployment](#cdk-webapp-tools-webappdeployment)|Construct that enables you to build and deploy a web application to an S3 bucket.
 
 
 **Structs**
 
 Name|Description
 ----|-----------
-[WebAppConfigProps](#cdk-webapp-config-webappconfigprops)|Props for WebAppConfig.
-[WebAppDeploymentProps](#cdk-webapp-config-webappdeploymentprops)|Props for WebAppDeployment.
+[WebAppConfigProps](#cdk-webapp-tools-webappconfigprops)|Props for WebAppConfig.
+[WebAppDeploymentProps](#cdk-webapp-tools-webappdeploymentprops)|Props for WebAppDeployment.
 
 
 
-## class WebAppConfig  <a id="cdk-webapp-config-webappconfig"></a>
+## class WebAppConfig  <a id="cdk-webapp-tools-webappconfig"></a>
 
 Construct that enables you to export value for use at runtime for your web application.
 
@@ -74,7 +74,7 @@ new WebAppConfig(scope: Construct, id: string, props: WebAppConfigProps)
 
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
-* **props** (<code>[WebAppConfigProps](#cdk-webapp-config-webappconfigprops)</code>)  *No description*
+* **props** (<code>[WebAppConfigProps](#cdk-webapp-tools-webappconfigprops)</code>)  *No description*
   * **bucket** (<code>[IBucket](#aws-cdk-aws-s3-ibucket)</code>)  Bucket to store the config file in. 
   * **configData** (<code>Map<string, string></code>)  The config data object that will be included in the file. 
   * **globalVariableName** (<code>string</code>)  The variable name to set on the window object for your web application. 
@@ -83,7 +83,7 @@ new WebAppConfig(scope: Construct, id: string, props: WebAppConfigProps)
 
 
 
-## class WebAppDeployment  <a id="cdk-webapp-config-webappdeployment"></a>
+## class WebAppDeployment  <a id="cdk-webapp-tools-webappdeployment"></a>
 
 Construct that enables you to build and deploy a web application to an S3 bucket.
 
@@ -135,7 +135,7 @@ new WebAppDeployment(scope: Construct, id: string, props: WebAppDeploymentProps)
 
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
-* **props** (<code>[WebAppDeploymentProps](#cdk-webapp-config-webappdeploymentprops)</code>)  *No description*
+* **props** (<code>[WebAppDeploymentProps](#cdk-webapp-tools-webappdeploymentprops)</code>)  *No description*
   * **bucket** (<code>[IBucket](#aws-cdk-aws-s3-ibucket)</code>)  The directory to deploy the application to. 
   * **buildCommand** (<code>string</code>)  The command to run to build the web app (for example, `yarn build`). 
   * **baseDirectory** (<code>string</code>)  If you are working within an environment that is using hoisted dependencies, you will need to set the base path where the dependencies can be found. __*Optional*__
@@ -150,7 +150,7 @@ new WebAppDeployment(scope: Construct, id: string, props: WebAppDeploymentProps)
 
 
 
-## struct WebAppConfigProps  <a id="cdk-webapp-config-webappconfigprops"></a>
+## struct WebAppConfigProps  <a id="cdk-webapp-tools-webappconfigprops"></a>
 
 
 Props for WebAppConfig.
@@ -166,7 +166,7 @@ Name | Type | Description
 
 
 
-## struct WebAppDeploymentProps  <a id="cdk-webapp-config-webappdeploymentprops"></a>
+## struct WebAppDeploymentProps  <a id="cdk-webapp-tools-webappdeploymentprops"></a>
 
 
 Props for WebAppDeployment.
