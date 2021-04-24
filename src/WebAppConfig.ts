@@ -77,7 +77,7 @@ export class WebAppConfig extends cdk.Construct {
     super(scope, id);
 
     const uploadConfigLambda = new NodejsFunction(this, 'UploadConfigLambda', {
-      entry: path.join(__dirname, './', 'lambda', 'upload-config'),
+      entry: path.join(__dirname, '../', 'lambda', 'upload-config'),
       handler: 'handler',
       timeout: cdk.Duration.seconds(10),
       runtime: lambda.Runtime.NODEJS_14_X,
