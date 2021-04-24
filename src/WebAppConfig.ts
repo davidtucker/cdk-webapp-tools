@@ -95,6 +95,8 @@ export class WebAppConfig extends cdk.Construct {
       properties: {
         ConfigData: props.configData,
         GlobalVarName: props.globalVariableName || 'appConfig',
+        Bucket: props.bucket.bucketName,
+        Key: props.key,
       },
     });
 
