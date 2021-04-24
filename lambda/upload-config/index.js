@@ -16,11 +16,13 @@
 */
 import axios from 'axios';
 import * as AWS from 'aws-sdk';
+import Ajv from 'ajv';
 
 // Setup S3 Client
 const s3 = new AWS.S3();
 
 // Get the JSON schema to evaluate the arguments passed to this fn
+const ajv = new Ajv();
 const schema = require('./schema.json');
 const validate = ajv.compile(schema);
 
