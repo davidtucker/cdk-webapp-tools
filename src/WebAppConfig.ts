@@ -25,8 +25,9 @@ export interface WebAppConfigProps {
   readonly configData: { [key: string]: string };
   /**
    * The variable name to set on the window object for your web application.
+   * @default appConfig
    */
-  readonly globalVariableName: string;
+  readonly globalVariableName?: string;
 }
 
 /**
@@ -93,6 +94,7 @@ export class WebAppConfig extends cdk.Construct {
       serviceToken: resourceConfigProvider.serviceToken,
       properties: {
         ConfigData: props.configData,
+        GlobalVarName: props.globalVariableName || 'appConfig',
       },
     });
 

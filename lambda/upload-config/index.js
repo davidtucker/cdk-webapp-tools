@@ -75,7 +75,7 @@ export const handler = async (event, context) => {
   if(!event.ResourceProperties.ConfigData || !event.ResourceProperties.GlobalVarName) {
     const message = 'Must include ConfigData and GlobalVarName in ResourceProperties';
     console.error(`${message}: Current Resource Properties: ${JSON.stringify(event.ResourceProperties)}`);
-    await sendCloudFormationResponse(event, context, 'FAILED', { errors });
+    await sendCloudFormationResponse(event, context, 'FAILED');
     return;
   }
 
