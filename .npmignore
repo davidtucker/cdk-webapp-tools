@@ -16,3 +16,6 @@ junit.xml
 !/lib
 !/lib/**/*.d.ts
 !/lib/**/*.js
+!/lambda
+!/lambda/**/*.d.ts
+!/lambda/**/*.js
