@@ -18,6 +18,10 @@
     "url": "https://davidtucker.net/",
     "organization": false
   },
+  "files": [
+    "lib/**",
+    "lambda/**"
+  ],
   "devDependencies": {
     "@aws-cdk/assert": "^1.100.0",
     "@types/jest": "^26.0.22",
@@ -75,7 +79,7 @@
   },
   "main": "lib/index.js",
   "license": "MIT",
-  "version": "1.100.2",
+  "version": "1.100.3",
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",
@@ -123,7 +127,10 @@
     "tsc": {
       "outDir": "lib",
       "rootDir": "src"
-    }
+    },
+    "excludeTypescript": [
+      "src/lambda"
+    ]
   },
   "awscdkio": {
     "twitter": "_davidtucker_"
