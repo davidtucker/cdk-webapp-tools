@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "Bucket": {
+      "type": "string",
+      "minLength": 1
+    },
+    "Key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "GlobalVarName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ConfigData": {
+      "type": "object",
+      "minProperties": 1
+    }
+  },
+  "required": [
+    "Bucket",
+    "Key",
+    "GlobalVarName",
+    "ConfigData"
+  ]
+}

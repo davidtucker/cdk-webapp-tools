@@ -20,6 +20,10 @@ import * as AWS from 'aws-sdk';
 // Setup S3 Client
 const s3 = new AWS.S3();
 
+// Get the JSON schema to evaluate the arguments passed to this fn
+const schema = require('./schema.json');
+const validate = ajv.compile(schema);
+
 // Utility to send the result back to CloudFormation
 const sendCloudFormationResponse = async (event, context, status, data = {}) => {
 
@@ -72,9 +76,10 @@ const uploadConfigDataToS3 = async event => {
 export const handler = async (event, context) => {
 
   // Verify properties
-  if(!event.ResourceProperties.ConfigData || !event.ResourceProperties.GlobalVarName) {
-    const message = 'Must include ConfigData and GlobalVarName in ResourceProperties';
-    console.error(`${message}: Current Resource Properties: ${JSON.stringify(event.ResourceProperties)}`);
+  const isValid = validate(event.ResourceProperties);
+  if(!isValid) {
+    const message = 'ResourceProperties does not include all required data';
+    console.error(`${message}: Errors: ${validate.errors}`);
     await sendCloudFormationResponse(event, context, 'FAILED');
     return;
   }
