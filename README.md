@@ -51,7 +51,7 @@ window['appConfig'] = {
 
 CDK Construct that enables you to build and deploy a web application to an S3 bucket.
 
-This includes the ability to execute a command that you specify (such as `npm build`) to build your application. If you are on Mac or Linux, it will attempt to run that locally before launching Docker to build.
+This includes the ability to execute a command that you specify (such as `npm build` or `yarn build`) to build your application. If you are on Mac or Linux, it will attempt to run that locally before launching Docker to build.
 
 [Documentation](API.md#cdk-webapp-config-webappdeployment)
 
