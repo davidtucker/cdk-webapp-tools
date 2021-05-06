@@ -92,6 +92,7 @@ export class WebAppConfig extends cdk.Construct {
 
     new cdk.CustomResource(this, 'WebAppConfigResource', {
       serviceToken: resourceConfigProvider.serviceToken,
+      resourceType: 'Custom::WebAppConfig',
       properties: {
         ConfigData: props.configData,
         GlobalVarName: props.globalVariableName || 'appConfig',
