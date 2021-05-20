@@ -1,4 +1,3 @@
-import { execSync } from 'child_process';
 import * as path from 'path';
 import * as cf from '@aws-cdk/aws-cloudfront';
 import * as s3 from '@aws-cdk/aws-s3';
@@ -72,7 +71,7 @@ export interface WebAppDeploymentProps {
 const getDockerCommand = (props:WebAppDeploymentProps):string => {
   const buildDirectory = props.buildDirectory || 'build';
   if (props.baseDirectory && props.relativeWebAppPath) {
-    const dockerOutput = path.join('/', 'asset-input', props.relativeWebAppPath, buildDirectory);
+    const dockerOutput = path.join('/', 'asset-input', props.relativeWebAppPath, buildDirectory).split(path.sep).join(path.posix.sep);
     return `
       cd ${props.relativeWebAppPath} && ${props.buildCommand} && cp -r ${dockerOutput}/* /asset-output/
     `;
@@ -82,24 +81,10 @@ const getDockerCommand = (props:WebAppDeploymentProps):string => {
   `;
 };
 
-const getLocalCommand = (props:WebAppDeploymentProps, outputDir:string):string => {
-  const buildDirectory = props.buildDirectory || 'build';
-  if (props.baseDirectory && props.relativeWebAppPath) {
-    return `
-      cd ${props.baseDirectory} && cd ${props.relativeWebAppPath} && ${props.buildCommand} && cp -R ${buildDirectory}/* ${outputDir}
-    `;
-  }
-  return `
-    cd ${props.webAppDirectory} && ${props.buildCommand} && cp -r /asset-input/${buildDirectory}/* /asset-output/
-  `;
-};
-
 /**
  * Construct that enables you to build and deploy a web application to an
  * S3 bucket.  This includes the ability to execute a command that you
- * specify (such as `npm build`) to build your application. If you are on
- * Mac or Linux, it will attempt to run that locally before launching Docker
- * to build.
+ * specify (such as `npm build`) to build your application.
  *
  * ### Example (assuming no hoisted dependencies)
  *
@@ -154,19 +139,6 @@ export class WebAppDeployment extends cdk.Construct {
       sources: [
         s3Deploy.Source.asset(buildBaseDirectory, {
           bundling: {
-            local: {
-              tryBundle(outputDir: string) {
-                try {
-                  execSync(getLocalCommand(props, outputDir), {
-                    stdio: 'inherit',
-                  });
-                  return true;
-                } catch (error) {
-                  console.error(`Local bundling error: ${error}`);
-                  return false;
-                }
-              },
-            },
             image: dockerImage,
             entrypoint: ['/bin/sh', '-c'],
             command: [
