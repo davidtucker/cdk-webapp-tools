@@ -2,7 +2,7 @@
   "name": "cdk-webapp-tools",
   "repository": {
     "type": "git",
-    "url": "https://github.com/davidtucker/cdk-webapp-config.git"
+    "url": "https://github.com/davidtucker/cdk-webapp-tools.git"
   },
   "scripts": {
     "build": "jsii",
