@@ -56,7 +56,6 @@ const sendCloudFormationResponse = async (event, context, status, data = {}) => 
   if (result.status >= 200 && result.status < 300) {
     // Success - nothing else needed here
   } else {
-    logger.error({ message: `Could not update CloudFormation`, result });
     throw new Error('Could not update CloudFormation');
   }
 };
