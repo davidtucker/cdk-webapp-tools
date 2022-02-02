@@ -39,13 +39,15 @@
     "standard-version": "^9",
     "ts-jest": "^26.5.5",
     "typedoc": "^0.22.11",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "constructs": "10.0.0",
+    "aws-cdk-lib": "2.10.0"
   },
   "peerDependencies": {
-    "constructs": "^10.0.0"
+    "constructs": "^10.0.0",
+    "aws-cdk-lib": "^2.10.1"
   },
   "dependencies": {
-    "aws-cdk-lib": "^2.10.0"
   },
   "bundledDependencies": [],
   "keywords": [
