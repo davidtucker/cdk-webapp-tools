@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "constructs": "^10.0.0",
-    "aws-cdk-lib": "^2.10.1"
+    "aws-cdk-lib": "^2.10.0"
   },
   "dependencies": {
   },
@@ -64,7 +64,7 @@
   },
   "main": "lib/index.js",
   "license": "MIT",
-  "version": "2.10.0",
+  "version": "2.10.2",
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",
