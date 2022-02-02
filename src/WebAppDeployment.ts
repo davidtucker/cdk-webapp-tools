@@ -1,8 +1,16 @@
 import * as path from 'path';
-import * as cf from '@aws-cdk/aws-cloudfront';
-import * as s3 from '@aws-cdk/aws-s3';
-import * as s3Deploy from '@aws-cdk/aws-s3-deployment';
-import * as cdk from '@aws-cdk/core';
+// import * as cf from '@aws-cdk/aws-cloudfront';
+// import * as s3 from '@aws-cdk/aws-s3';
+// import * as s3Deploy from '@aws-cdk/aws-s3-deployment';
+// import * as cdk from '@aws-cdk/core';
+
+import {
+  aws_cloudfront as cf,
+  aws_s3 as s3,
+  aws_s3_deployment as s3Deploy,
+  DockerImage,
+} from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 
 /**
  * Props for WebAppDeployment
@@ -65,7 +73,7 @@ export interface WebAppDeploymentProps {
    *
    * @default `cdk.DockerImage.fromRegistry('node')`
    */
-  readonly dockerImage?: cdk.DockerImage;
+  readonly dockerImage?: DockerImage;
 }
 
 const getDockerCommand = (props:WebAppDeploymentProps):string => {
@@ -115,8 +123,8 @@ const getDockerCommand = (props:WebAppDeploymentProps):string => {
  *  });
  * ```
  */
-export class WebAppDeployment extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: WebAppDeploymentProps) {
+export class WebAppDeployment extends Construct {
+  constructor(scope: Construct, id: string, props: WebAppDeploymentProps) {
     super(scope, id);
 
     if (!props.baseDirectory && !props.webAppDirectory) {
@@ -130,7 +138,7 @@ export class WebAppDeployment extends cdk.Construct {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const buildBaseDirectory:string = props.baseDirectory || props.webAppDirectory!;
 
-    const dockerImage = props.dockerImage || cdk.DockerImage.fromRegistry('node');
+    const dockerImage = props.dockerImage || DockerImage.fromRegistry('node');
 
     const deployProps:s3Deploy.BucketDeploymentProps = {
       prune: props.prune ?? true,

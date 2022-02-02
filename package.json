@@ -19,9 +19,9 @@
     "organization": false
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.100.0",
+    "@aws-cdk/assert": "^2.10.0",
     "@types/jest": "^26.0.22",
-    "@types/node": "^12.0.0",
+    "@types/node": "^12.20.43",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "esbuild": "^0.11.12",
@@ -30,35 +30,22 @@
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3",
-    "jest-junit": "^12",
+    "jest-junit": "^13.0.0",
     "jsii": "^1.29.0",
     "jsii-diff": "^1.29.0",
     "jsii-docgen": "^1.8.68",
     "jsii-pacmak": "^1.29.0",
-    "json-schema": "^0.3.0",
+    "json-schema": "^0.4.0",
     "standard-version": "^9",
     "ts-jest": "^26.5.5",
-    "typedoc": "^0.20.35",
-    "typescript": "^4.2.4"
+    "typedoc": "^0.22.11",
+    "typescript": "^4.5.5"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-cloudfront": "1.100.0",
-    "@aws-cdk/aws-lambda": "1.100.0",
-    "@aws-cdk/aws-lambda-nodejs": "1.100.0",
-    "@aws-cdk/aws-s3": "1.100.0",
-    "@aws-cdk/aws-s3-deployment": "1.100.0",
-    "@aws-cdk/core": "1.100.0",
-    "@aws-cdk/custom-resources": "1.100.0",
-    "constructs": "^3.2.27"
+    "constructs": "^10.0.0"
   },
   "dependencies": {
-    "@aws-cdk/aws-cloudfront": "1.100.0",
-    "@aws-cdk/aws-lambda": "1.100.0",
-    "@aws-cdk/aws-lambda-nodejs": "1.100.0",
-    "@aws-cdk/aws-s3": "1.100.0",
-    "@aws-cdk/aws-s3-deployment": "1.100.0",
-    "@aws-cdk/core": "1.100.0",
-    "@aws-cdk/custom-resources": "1.100.0"
+    "aws-cdk-lib": "^2.10.0"
   },
   "bundledDependencies": [],
   "keywords": [
@@ -75,7 +62,7 @@
   },
   "main": "lib/index.js",
   "license": "MIT",
-  "version": "1.100.12",
+  "version": "2.10.0",
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",

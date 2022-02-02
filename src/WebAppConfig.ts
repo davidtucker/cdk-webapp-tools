@@ -1,9 +1,13 @@
 import * as path from 'path';
-import * as lambda from '@aws-cdk/aws-lambda';
-import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
-import * as s3 from '@aws-cdk/aws-s3';
-import * as cdk from '@aws-cdk/core';
-import * as cr from '@aws-cdk/custom-resources';
+import {
+  custom_resources as cr,
+  aws_lambda as lambda,
+  aws_s3 as s3,
+  CustomResource,
+  Duration,
+} from 'aws-cdk-lib';
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
+import { Construct } from 'constructs';
 
 /**
  * Props for WebAppConfig
@@ -73,14 +77,14 @@ export interface WebAppConfigProps {
  *
  *
  */
-export class WebAppConfig extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: WebAppConfigProps) {
+export class WebAppConfig extends Construct {
+  constructor(scope: Construct, id: string, props: WebAppConfigProps) {
     super(scope, id);
 
     const uploadConfigLambda = new NodejsFunction(this, 'UploadConfigLambda', {
       entry: path.join(__dirname, '../', 'lambda', 'upload-config', 'index.js'),
       handler: 'handler',
-      timeout: cdk.Duration.seconds(10),
+      timeout: Duration.seconds(10),
       runtime: lambda.Runtime.NODEJS_14_X,
     });
 
@@ -90,7 +94,7 @@ export class WebAppConfig extends cdk.Construct {
       onEventHandler: uploadConfigLambda,
     });
 
-    new cdk.CustomResource(this, 'WebAppConfigResource', {
+    new CustomResource(this, 'WebAppConfigResource', {
       serviceToken: resourceConfigProvider.serviceToken,
       resourceType: 'Custom::WebAppConfig',
       properties: {
