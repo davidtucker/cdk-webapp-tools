@@ -38,7 +38,7 @@
     "json-schema": "^0.3.0",
     "standard-version": "^9",
     "ts-jest": "^26.5.5",
-    "typedoc": "^0.20.35",
+    "typedoc": "^0.22.15",
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
@@ -75,7 +75,7 @@
   },
   "main": "lib/index.js",
   "license": "MIT",
-  "version": "1.100.12",
+  "version": "1.100.13",
   "jest": {
     "testMatch": [
       "**/__tests__/**/*.ts?(x)",

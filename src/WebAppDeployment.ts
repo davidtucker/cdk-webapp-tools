@@ -63,7 +63,7 @@ export interface WebAppDeploymentProps {
    * The container image to use when bundling the application. This will have
    * no effect with local bundling.
    *
-   * @default `cdk.DockerImage.fromRegistry('node')`
+   * @default `cdk.DockerImage.fromRegistry('public.ecr.aws/docker/library/node:16')`
    */
   readonly dockerImage?: cdk.DockerImage;
 }
@@ -130,7 +130,7 @@ export class WebAppDeployment extends cdk.Construct {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const buildBaseDirectory:string = props.baseDirectory || props.webAppDirectory!;
 
-    const dockerImage = props.dockerImage || cdk.DockerImage.fromRegistry('node');
+    const dockerImage = props.dockerImage || cdk.DockerImage.fromRegistry('public.ecr.aws/docker/library/node:16');
 
     const deployProps:s3Deploy.BucketDeploymentProps = {
       prune: props.prune ?? true,
