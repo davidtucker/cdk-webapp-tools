@@ -45,7 +45,7 @@ const sendCloudFormationResponse = async (event, context, status, data = {}) => 
     url: event.ResponseURL,
     method: 'PUT',
     headers: {
-      'Content-Type': '',
+      'Content-Type': 'application/json',
       'Content-Length': body.length,
     },
     data: body,
