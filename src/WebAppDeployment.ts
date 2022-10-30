@@ -154,6 +154,12 @@ export class WebAppDeployment extends Construct {
               '-c',
               getDockerCommand(props),
             ],
+            volumes: [
+              {
+                hostPath: '/tmp',
+                containerPath: '/tmp',
+              },
+            ],
           },
         }),
       ],
